@@ -10,6 +10,8 @@ import { Navbar } from "../components/sections/navbar";
 import { TestimonialsSection } from "../components/sections/testimonials-section";
 import LeadFormModal from "@/components/LeadFormModal";
 import { useState } from "react";
+import { RoadmapSection } from "@/components/RoadmapSection";
+import { ThreeStepsSection } from "@/components/ThreeStepsSection";
 
 
 export default function HomePage() {
@@ -23,8 +25,10 @@ export default function HomePage() {
         <VoiceDemo />
       </section>
       <FeaturesSection />
+      <ThreeStepsSection/>
       <LogosSection />
       <TestimonialsSection />
+      <RoadmapSection />
       <FinalCTA />
       <Footer />
     </>
