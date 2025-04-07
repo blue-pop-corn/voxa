@@ -19,7 +19,7 @@ export const RoadmapSection = () => {
     },
     {
       title: "💬 WhatsApp + SMS Support",
-      description: "Automate lead follow-ups on WhatsApp & SMS with Voxa’s brain.",
+      description: "Automate lead follow-ups on WhatsApp & SMS with Voxa's brain.",
       status: "In Progress",
     },
   ]
@@ -27,9 +27,9 @@ export const RoadmapSection = () => {
   return (
     <section className="w-full bg-yellow-50 py-20 px-6">
       <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-3xl font-bold text-slate-900 mb-6">🚧 What’s Coming Next</h2>
+        <h2 className="text-3xl font-bold text-slate-900 mb-6">🚧 What&apos;s Coming Next</h2>
         <p className="text-slate-700 mb-12">
-          We're just getting started. Here's what we're cooking up for you.
+          We&apos;re just getting started. Here&apos;s what we&apos;re cooking up for you.
         </p>
         <div className="grid gap-6 md:grid-cols-2">
           {roadmap.map((item, i) => (
