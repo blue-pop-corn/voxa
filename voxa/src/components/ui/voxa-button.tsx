@@ -12,8 +12,8 @@ export const VoxaButton = ({
 }: VoxaButtonProps) => {
   const baseStyles =
     voxaVariant === "primary"
-      ? "bg-yellow-400 hover:bg-yellow-300 text-black font-semibold"
-      : "bg-slate-800 hover:bg-slate-700 text-white font-semibold";
+      ? "bg-slate-900 hover:bg-slate-300 text-white font-semibold"
+      : "bg-yellow-900 hover:bg-slate-900 text-black font-semibold";
       return (
         <Button
           className={cn("rounded-xl px-6 py-3 text-base", baseStyles, className)}

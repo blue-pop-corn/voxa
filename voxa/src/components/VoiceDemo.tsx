@@ -1,20 +1,22 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 
 const VoiceDemo = () => {
   const [isListening, setIsListening] = useState(false)
   const [userInput, setUserInput] = useState("")
   const [response, setResponse] = useState("")
   const [recognition, setRecognition] = useState<SpeechRecognition | null>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const animationRef = useRef<number | null>(null)
 
   useEffect(() => {
     if (typeof window === "undefined") return
 
     const SpeechRecognitionClass =
-  typeof window !== "undefined"
-    ? window.SpeechRecognition || window.webkitSpeechRecognition
-    : undefined
+      typeof window !== "undefined"
+        ? window.SpeechRecognition || window.webkitSpeechRecognition
+        : undefined
 
     if (SpeechRecognitionClass) {
       const recog = new SpeechRecognitionClass()
@@ -60,7 +62,60 @@ const VoiceDemo = () => {
   const speak = (text: string) => {
     const synth = window.speechSynthesis
     const utterance = new SpeechSynthesisUtterance(text)
+
+    utterance.onstart = () => {
+      startFakeWaveform()
+    }
+
+    utterance.onend = () => {
+      stopFakeWaveform()
+    }
+
     synth.speak(utterance)
+  }
+
+  const startFakeWaveform = () => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
+
+    let t = 0
+    const draw = () => {
+      if (!ctx || !canvas) return
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.beginPath()
+      ctx.moveTo(0, canvas.height / 2)
+
+      for (let x = 0; x < canvas.width; x++) {
+        const y =
+          canvas.height / 2 +
+          Math.sin((x + t) * 0.05) * 20 * Math.sin((t * 0.02)) // funky waveform
+        ctx.lineTo(x, y)
+      }
+
+      ctx.strokeStyle = "#2563eb"
+      ctx.lineWidth = 2
+      ctx.stroke()
+
+      t += 1
+      animationRef.current = requestAnimationFrame(draw)
+    }
+
+    animationRef.current = requestAnimationFrame(draw)
+  }
+
+  const stopFakeWaveform = () => {
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current)
+      animationRef.current = null
+    }
+
+    const canvas = canvasRef.current
+    const ctx = canvas?.getContext("2d")
+    if (ctx && canvas) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+    }
   }
 
   return (
@@ -87,6 +142,13 @@ const VoiceDemo = () => {
           <p className="italic text-blue-700">{response}</p>
         </div>
       )}
+
+      <canvas
+        ref={canvasRef}
+        width={600}
+        height={100}
+        className="mt-6 w-full border rounded bg-gray-50"
+      />
     </div>
   )
 }

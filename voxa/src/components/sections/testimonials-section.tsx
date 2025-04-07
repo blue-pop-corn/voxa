@@ -8,13 +8,13 @@ export const TestimonialsSection = () => {
             <p className="text-lg text-slate-800 italic">
               “Voxa booked us 37 demo calls in the first week — hands-free.”
             </p>
-            <footer className="mt-4 text-sm text-slate-600">— CEO, Startly</footer>
+            <footer className="mt-4 text-sm text-slate-600">— MD, Panache</footer>
           </blockquote>
           <blockquote className="bg-gray-100 p-6 rounded-xl text-left shadow-md">
             <p className="text-lg text-slate-800 italic">
               “This is the fastest we’ve ever launched anything voice-based. Game changer.”
             </p>
-            <footer className="mt-4 text-sm text-slate-600">— Head of Growth, AudioIQ</footer>
+            <footer className="mt-4 text-sm text-slate-600">— Head of Growth, Go Do Good</footer>
           </blockquote>
         </div>
       </div>
