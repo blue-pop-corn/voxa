@@ -8,7 +8,6 @@ interface SpeechRecognitionResultList {
   [index: number]: SpeechRecognitionResult
   length: number
 }
-
 interface SpeechRecognitionErrorEvent extends Event {
   error: string
   message: string

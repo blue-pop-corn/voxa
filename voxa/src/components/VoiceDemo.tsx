@@ -39,8 +39,9 @@ const VoiceDemo = () => {
         speak(data.reply)
       }
 
-      recog.onerror = (event: any) => {
-        console.error("Speech recognition error:", event.error)
+      recog.onerror = (event: Event) => {
+        const errorEvent = event as SpeechRecognitionErrorEvent
+        console.error("Speech recognition error:", errorEvent.error)
         setIsListening(false)
       }
 
