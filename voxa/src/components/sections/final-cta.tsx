@@ -1,11 +1,6 @@
 "use client"
 
-import LeadFormModal from "../LeadFormModal";
-import { VoxaButton } from "../ui/voxa-button";
-import { useState } from "react"
-
 export const FinalCTA = () => {
-    const [showModal, setShowModal] = useState(false)
   
   return (
     <section className="bg-slate-900 text-white text-center py-20 px-6">

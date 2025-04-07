@@ -8,13 +8,11 @@ import { HeroSection } from "../components/sections/hero-section";
 import { LogosSection } from "../components/sections/logos-section";
 import { Navbar } from "../components/sections/navbar";
 import { TestimonialsSection } from "../components/sections/testimonials-section";
-import { useState } from "react";
 import { RoadmapSection } from "@/components/RoadmapSection";
 import { ThreeStepsSection } from "@/components/ThreeStepsSection";
 
 
 export default function HomePage() {
-      const [showModal, setShowModal] = useState(false)
 
   return (
     <>

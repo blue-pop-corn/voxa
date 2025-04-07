@@ -62,17 +62,59 @@ const VoiceDemo = () => {
   const speak = (text: string) => {
     const synth = window.speechSynthesis
     const utterance = new SpeechSynthesisUtterance(text)
-
+  
     utterance.onstart = () => {
       startFakeWaveform()
     }
-
+  
     utterance.onend = () => {
       stopFakeWaveform()
     }
-
+  
     synth.speak(utterance)
   }
+  
+  useEffect(() => {
+    if (typeof window === "undefined") return
+  
+    const SpeechRecognitionClass =
+      typeof window !== "undefined"
+        ? window.SpeechRecognition || window.webkitSpeechRecognition
+        : undefined
+  
+    if (SpeechRecognitionClass) {
+      const recog = new SpeechRecognitionClass()
+      recog.continuous = false
+      recog.lang = "en-US"
+      recog.interimResults = false
+      recog.maxAlternatives = 1
+  
+      recog.onresult = async (event: SpeechRecognitionEvent) => {
+        const transcript = event.results[0][0].transcript
+        setUserInput(transcript)
+        setIsListening(false)
+  
+        const res = await fetch("/api/voxa", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: transcript }),
+        })
+  
+        const data = await res.json()
+        setResponse(data.reply)
+        speak(data.reply) 
+      }
+  
+      recog.onerror = (event: Event) => {
+        const errorEvent = event as SpeechRecognitionErrorEvent
+        console.error("Speech recognition error:", errorEvent.error)
+        setIsListening(false)
+      }
+  
+      setRecognition(recog)
+    }
+  }, [speak]) 
+  
 
   const startFakeWaveform = () => {
     const canvas = canvasRef.current
