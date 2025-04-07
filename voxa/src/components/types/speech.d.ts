@@ -9,6 +9,11 @@ interface SpeechRecognitionResultList {
   length: number
 }
 
+interface SpeechRecognitionErrorEvent extends Event {
+  error: string
+  message: string
+}
+
 interface SpeechRecognitionResult {
   [index: number]: SpeechRecognitionAlternative
   isFinal: boolean
