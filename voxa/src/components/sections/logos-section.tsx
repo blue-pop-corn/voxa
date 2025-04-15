@@ -8,7 +8,7 @@ export const LogosSection = () => {
           Trusted by innovative Indian startups
         </p>
         <div className="flex flex-wrap justify-center gap-8 opacity-80">
-          <div className="flex items-center space-x-2">
+          {/* <div className="flex items-center space-x-2">
           <Image
               src="/images/logos/plugzmart_logo.jpeg"
               alt="Plugzmart Logo"
@@ -17,7 +17,7 @@ export const LogosSection = () => {
               className="h-12 w-auto"
             />
             <span className="text-xl font-semibold">Plugzmart</span>
-          </div>
+          </div> */}
 
           <div className="flex items-center space-x-2">
           <Image
@@ -30,7 +30,7 @@ export const LogosSection = () => {
             <span className="text-xl font-semibold">Panache</span>
           </div>
 
-          <div className="flex items-center space-x-2">
+          {/* <div className="flex items-center space-x-2">
             <Image
               src="/images/logos/go_do_good_logo.jpeg"
               alt="Go Do Good Logo"
@@ -39,7 +39,7 @@ export const LogosSection = () => {
               className="h-12 w-auto"
             />
             <span className="text-xl font-semibold">Go Do Good</span>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

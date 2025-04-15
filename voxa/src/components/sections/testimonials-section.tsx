@@ -14,7 +14,7 @@ export const TestimonialsSection = () => {
             <p className="text-lg text-slate-800 italic">
               “This is the fastest we’ve ever launched anything voice-based. Game changer.”
             </p>
-            <footer className="mt-4 text-sm text-slate-600">— Head of Growth, Go Do Good</footer>
+            <footer className="mt-4 text-sm text-slate-600">— MD, Panache</footer>
           </blockquote>
         </div>
       </div>
